@@ -1,0 +1,53 @@
+{
+  "name": "medgame",
+  "version": "0.1.0",
+  "description": "Jogo educacional para preparação de médicos para prova de residência",
+  "main": "dist/server/index.js",
+  "scripts": {
+    "start": "bun run dist/server/index.js",
+    "dev:server": "bun --hot src/server/index.ts",
+    "dev": "concurrently \"npm run dev:client\" \"bun --hot src/server/index.ts\"",
+    "map-editor": "bun run --config=tsconfig.editor.json src/server/index.ts",
+    "build:editor": "bun build src/tools/map-editor/index.ts --outdir dist/tools"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seu-usuario/medgame.git"
+  },
+  "keywords": [
+    "game",
+    "medical",
+    "education",
+    "3d",
+    "threejs"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongoose": "^8.12.1",
+    "socket.io": "^4.8.1",
+    "three": "^0.174.0"
+  },
+  "devDependencies": {
+    "@types/dat.gui": "^0.7.13",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.13.10",
+    "@types/socket.io": "^3.0.2",
+    "@types/three": "^0.174.0",
+    "bun-types": "^1.2.5",
+    "concurrently": "^9.1.2",
+    "copy-webpack-plugin": "^13.0.0",
+    "css-loader": "^7.1.2",
+    "dat.gui": "^0.7.9",
+    "html-webpack-plugin": "^5.6.3",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.2",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.2",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0"
+  }
+}

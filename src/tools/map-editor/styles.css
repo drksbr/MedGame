@@ -1,0 +1,355 @@
+/* src/tools/map-editor/styles.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Roboto", sans-serif;
+  background-color: #f0f0f0;
+}
+
+#editor-container {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Header */
+.editor-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #2c3e50;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.editor-header h1 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.editor-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.editor-actions button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.editor-actions button:hover {
+  background-color: #2980b9;
+}
+
+#map-name {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  min-width: 200px;
+}
+
+/* Editor Toolbar */
+.editor-toolbar {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  width: 120px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 10px;
+}
+
+.toolbar-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #333;
+  font-size: 14px;
+}
+
+.toolbar-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 5px;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 12px;
+}
+
+.toolbar-button:hover {
+  background-color: #f5f5f5;
+}
+
+.toolbar-button.active {
+  background-color: #e0f0ff;
+  color: #0066cc;
+}
+
+.toolbar-button svg {
+  margin-right: 5px;
+}
+
+/* Shortcuts panel */
+.shortcuts-panel {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  font-size: 14px;
+  max-width: 250px;
+}
+
+.shortcuts-panel h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+.shortcuts-panel ul {
+  list-style-type: none;
+}
+
+.shortcuts-panel li {
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.shortcuts-panel strong {
+  display: inline-block;
+  min-width: 60px;
+  color: #2c3e50;
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  color: white;
+}
+
+.loading-overlay.hidden {
+  display: none;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid white;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Messages */
+.message-area {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  z-index: 900;
+  max-width: 300px;
+}
+
+.message {
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  animation: messageSlide 0.3s ease-out;
+}
+
+.message.success {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.message.error {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.message.info {
+  background-color: #3498db;
+  color: white;
+}
+
+@keyframes messageSlide {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.map-list {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.map-item {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.map-item:hover {
+  background-color: #f5f5f5;
+}
+
+.map-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.map-date {
+  font-size: 12px;
+  color: #777;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modal-actions button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#modal-cancel {
+  background-color: #95a5a6;
+  color: white;
+}
+
+#modal-cancel:hover {
+  background-color: #7f8c8d;
+}
+
+/* Cursor states */
+.cursor-pan {
+  cursor: grab !important;
+}
+
+.cursor-pan:active {
+  cursor: grabbing !important;
+}
+
+.cursor-select {
+  cursor: pointer;
+}
+
+.cursor-add {
+  cursor: cell;
+}
+
+.cursor-delete {
+  cursor: no-drop;
+}
+
+/* dat.GUI customizations */
+.dg.ac {
+  z-index: 100 !important;
+}
+
+.dg .property-name {
+  width: 40% !important;
+}
+
+.dg .c {
+  width: 60% !important;
+}
